@@ -1,0 +1,43 @@
+<html>
+
+<head>
+<title>大字</title>
+</head>
+<script language="javascript">
+//author unknown
+Phrase="欢迎您的光临"
+Balises=""
+Taille=80;
+Midx=250;
+Decal=0.5;
+Nb=Phrase.length;
+y=-10000;
+for (x=0;x<Nb;x++){
+  Balises=Balises + '<DIV Id=L' + x + ' STYLE="width:5;font-size:30;font-family: 汉鼎繁特楷;font-weight:bold;position:absolute;top:200;left:300">' + Phrase.charAt(x) + '</DIV>'
+}
+document.write (Balises);
+Time=window.setInterval("Alors()",10);
+Alpha=5;
+I_Alpha=0.05;
+
+function Alors(){
+	Alpha=Alpha-I_Alpha;
+	for (x=0;x<Nb;x++){
+		Alpha1=Alpha+Decal*x;
+		Cosine=Math.cos(Alpha1);
+		Ob=document.all("L"+x);
+		Ob.style.posLeft=Midx+170*Math.sin(Alpha1)+50;
+		Ob.style.zIndex=20*Cosine;
+		Ob.style.fontSize=Taille+25*Cosine;
+		Ob.style.color="rgb("+ (127+Cosine*80+50) + ","+ (0+Cosine*80+50) + ",0)";
+	}
+}
+
+</script>
+<body>
+<p align="center" ><font color="#CE288C" size="10" face="方正黄草简体">旋转的文字</font></p>
+<br><img src="101.gif">
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<img src="101.gif">
+</body>
+</html>

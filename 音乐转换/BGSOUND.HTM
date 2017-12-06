@@ -1,0 +1,48 @@
+<HTML>
+<HEAD>
+<TITLE>
+背景音效
+</TITLE>
+<STYLE>
+<!--样式单 -->
+a{font-size:30pt;color:blue;font-family:Vineta BT}
+a:link{text-decoration:none;}
+a:hover{text-decoration:none;color:red}
+a:visited{text-decoration:none;}
+.20pt{font-size:20pt;font-family:方正魏碑繁体;color:#ff66cc}
+</STYLE>
+<script language=javascript>
+var mid=new Array()
+mid[0]="S01.wav"
+mid[1]="S02.wav"
+mid[2]="S03.wav"
+mid[3]="S04.wav"
+mid[4]="S05.wav"
+mid[5]="S06.wav"
+mid[6]="S07.wav"
+mid[7]="S08.wav"
+function clicksound(i)
+{
+  document.all.sound.src=mid[i]
+}
+</script>
+</HEAD>
+<BODY>
+<bgsound id=sound src="" loop=1>
+<bgsound src="Abuse.mid">
+<center>
+<a href="#" onclick="clicksound(0)">Listen to the sound 1.</a><br>
+<a href="#" onclick="clicksound(1)">Listen to the sound 2.</a><br>
+<a href="#" onclick="clicksound(2)">Listen to the sound 3.</a><br>
+<a href="#" onclick="clicksound(3)">Listen to the sound 4.</a><br>
+<a href="#" onclick="clicksound(4)">Listen to the sound 5.</a><br>
+<a href="#" onclick="clicksound(5)">Listen to the sound 6.</a><br>
+<a href="#" onclick="clicksound(6)">NO! NO! NO!</a><br>
+<a href="#" onclick="clicksound(7)">You Win!Congratulations!</a><br>
+<hr width=700>
+<font class=20pt>
+单击上面的选择，音乐会转换。
+</font>
+</center>
+</BODY>
+</HTML>

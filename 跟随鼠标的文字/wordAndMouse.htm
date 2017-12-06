@@ -1,0 +1,97 @@
+<HTML>
+<HEAD>
+<TITLE>Dynamic Drive- Cursor Trailer Text</TITLE>
+<STYLE>
+.spanstyle 
+  {
+   FONT-WEIGHT: bold; FONT-SIZE: 20pt; VISIBILITY: visible; COLOR: #33CC99; FONT-FAMILY: 创艺繁琥珀; POSITION: absolute; TOP: -50px
+  }
+</STYLE>
+<SCRIPT>
+var x,y
+var step=20
+var flag=0
+var message="我 永 远 跟 随 着 你——鼠 标 ，你 到 哪 我 到 哪 ! "
+message=message.split("")
+
+var xpos=new Array()
+for (i=0;i<=message.length-1;i++) {
+	xpos[i]=-50 //定义字符串中每个字符的初始位置
+}
+
+var ypos=new Array()
+for (i=0;i<=message.length-1;i++) {
+	ypos[i]=-50 //定义字符串中每个字符的初始位置
+}
+
+function handlerMM(e){
+	x = (document.layers) ? e.pageX : document.body.scrollLeft+event.clientX
+	y = (document.layers) ? e.pageY : document.body.scrollTop+event.clientY
+	flag=1
+}
+
+function makesnake() {
+	if (flag==1 && document.all) {
+    	for (i=message.length-1; i>=1; i--) {
+   			xpos[i]=xpos[i-1]+step   //每个字符间x坐标相差20
+			ypos[i]=ypos[i-1]        //每个字符y坐标相等,即等高.
+    	}
+		xpos[0]=x+step    //字符串第一个字符的x坐标紧紧跟随鼠标的光标
+		ypos[0]=y         //字符串第一个字符的y坐标跟鼠标的光标等高
+	
+		for (i=0; i<message.length-1; i++) {
+    		var thisspan = eval("span"+(i)+".style")
+    		thisspan.posLeft=xpos[i]
+		thisspan.posTop=ypos[i]
+    	}
+	}
+	
+	else if (flag==1 && document.layers) {
+    	for (i=message.length-1; i>=1; i--) {
+   			xpos[i]=xpos[i-1]+step
+			ypos[i]=ypos[i-1]
+    	}
+		xpos[0]=x+step
+		ypos[0]=y
+	
+		for (i=0; i<message.length-1; i++) {
+    		var thisspan = eval("document.span"+i) //取得字符所在层的索引
+    		thisspan.left=xpos[i]  //改变字符所在层的位置
+	        thisspan.top=ypos[i]
+    	}
+	}
+		var timer=setTimeout("makesnake()",30)
+}
+
+</SCRIPT>
+</HEAD>
+<BODY style="OVERFLOW-Y: scroll; OVERFLOW-X: hidden; WIDTH: 100%" 
+bgColor=#ffffff leftMargin=0 onload=makesnake() marginwidth="0">
+<TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
+  <TBODY>
+  <TR>
+    <TD vAlign=top align=left colSpan=3><BR>
+      <CENTER>
+      <P align=left>&nbsp;</P>
+      <P align=center><FONT size=20 color=#0069D6 face=汉鼎繁中变>追随鼠标的文字</FONT></P>
+      <img src=head.gif><br></CENTER>
+      <P align=left><STRONG><FONT face=Verdana>
+      <SCRIPT>
+       for (i=0;i<=message.length-1;i++) {
+         document.write("<span id='span"+i+"' class='spanstyle'>")
+	 document.write(message[i])
+         document.write("</span>")
+        }
+
+       if (document.layers){
+	document.captureEvents(Event.MOUSEMOVE);
+        }
+       document.onmousemove = handlerMM;
+      </SCRIPT>
+     </FONT></STRONG></P>
+<P align=center>&nbsp;</P></TD>
+</TR>
+</TBODY>
+</TABLE>
+</BODY>
+</HTML>

@@ -1,0 +1,70 @@
+<HTML>
+<HEAD>
+<TITLE>
+新的一页
+</TITLE>
+<STYLE>
+<!--样式单 -->
+.time{
+      font-family:Comic Sans Ms;
+      font-size:11pt;
+      font-weight:bold;
+      color:#00008d
+     }
+.50pt{font-size:50pt;font-family:方正魏碑繁体;color:#CC0099}
+</STYLE>
+<script>
+<!--
+var ctimer;
+function init()
+ {
+  if (document.all)
+   {
+    time2.style.left=time1.style.posLeft;
+    time2.style.top=time1.style.posTop+time1.offsetHeight-6;
+    settimes();
+   }
+ }
+
+function settimes()
+ {
+  var time=new Date();
+  hours=time.getHours();
+  mins=time.getMinutes();
+  secs=time.getSeconds();
+  if(hours<10)
+    hours="0"+hours;
+  if(mins<10)
+    mins="0"+mins;
+  if(secs<10)
+    secs="0"+secs;
+  time1.innerHTML=hours+":"+mins+":"+secs
+  time2.innerHTML=hours+":"+mins+":"+secs
+  ctimer=setTimeout('settimes()',960);
+ }
+
+-->
+</script>
+</HEAD>
+<BODY text="#ffe4e1" onLoad="init()">
+<div Id="time1" Style="position:absolute; widt:10; height:10; top:10; left:40" class="time"></div>
+<div Id="time2" Style="position:absolute; filter:flipv() alpha(opacity=20); font-style:italic" class="time"></div>
+
+<div Style="position:absolute; top:60; left:40">
+<TABLE width="400" border=0 cellpadding=0 cellspacing=0>
+  <TBODY>
+  <TR>
+    <TD width="26%"><IMG height=150 alt=正常图片 src="1.jpg" width=200></TD>
+  </TR>
+  <TR>
+    <TD width="26%"><IMG style="FILTER: flipv()  alpha(opacity=20)" height=150 
+        src="1.jpg" width=200></TD>
+  </TR></TBODY></TABLE>
+</div>
+<div Style="position:absolute; top:10; left:300">
+<font class=50pt><br>
+水中花，倒影效果。
+</font>
+</div>
+</BODY>
+</HTML>

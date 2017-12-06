@@ -1,0 +1,97 @@
+<HTML>
+<HEAD>
+<title>Start</title>
+<style>
+.30pt{font-size:30pt;font-family:汉鼎繁特楷;color:#ff66cc}
+.40pt{font-size:30pt;font-family:FetteFraD;color:#de3076}
+</style>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+var num = new Array(6)
+for (var i = 0; i < num.length ; i++) {
+        num[i] = new Image()
+        num[i].src = i+"i.gif"
+}
+var nextPage = "newpage.htm";
+function makearray(n) 
+{
+    this.length = n;
+    for(var i = 1; i <= n; i++)
+	this[i] = 0;
+    return this;
+}
+
+hexa = new makearray(16);
+
+for(var i = 0; i < 10; i++)
+    hexa[i] = i;
+hexa[10]="a"; hexa[11]="b"; hexa[12]="c";
+hexa[13]="d"; hexa[14]="e"; hexa[15]="f";
+
+function tohex(i) {
+    if (i < 0)
+	return "00";
+    else if (255 < i)
+	return "ff";
+    else
+	return "" + hexa[Math.floor(i/16)] + hexa[i%16];
+}
+
+function fade(s_red, s_green, s_blue, e_red, e_green, e_blue, step) {
+    for(var i = 0; i <= step; i++) 
+    {
+      document.bgColor="#" + tohex(Math.floor(s_red * ((step-i)/step) + e_red * (i/step))) 
+                           + tohex(Math.floor(s_green * ((step-i)/step) + e_green * (i/step)))
+                           + tohex(Math.floor(s_blue * ((step-i)/step) + e_blue * (i/step)));
+    }
+}
+function countdown(idx)
+{
+   if (idx == 0 )
+    { 
+      window.status="We go now !";
+      fade(255,255,255,0,0,0,255);
+      top.location=nextPage;
+    }
+   else
+    {
+     window.status=idx+" seconds left";
+     nextimg=setTimeout("countdown(" + (idx-1) + ")", 1000);
+    }
+}  
+
+function countdown(idx)
+{
+   if (idx == 0 )
+    { 
+      document.img.src=num[idx].src;
+      window.status="We go now !";
+      fade(255,255,255,0,0,0,100);
+      location.replace(nextPage);
+    }
+   else
+    {
+      document.img.src=num[idx].src;
+      window.status=idx+" seconds left";
+      nextimg=setTimeout("countdown(" + (idx-1) + ")", 1000);
+    }
+}  
+-->
+</SCRIPT>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#000000" LINK="#000099" VLINK="#551A8B" ALINK="#993366">
+<CENTER>
+<font class=30pt><br>欢迎来到我的主页!</font></br>
+<IMG NAME=img SRC="logo.gif" HEIGHT=150 WIDTH=150><P>
+<font class=40pt>Let's go!</font>
+<FONT SIZE=-1>
+<script language=JavaScript>
+fade(0, 0, 0, 255, 255, 255, 100);
+</script>
+<script language=JavaScript>
+countID=setTimeout("countdown(5)", 4000); //give 4 sec to load all images to cache
+</script>
+</FONT>
+</CENTER>
+</body>
+</html>

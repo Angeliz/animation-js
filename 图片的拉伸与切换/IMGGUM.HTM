@@ -1,0 +1,100 @@
+<html>
+<head>
+<TITLE>伸展与缩放动画效果Banner显示</TITLE>
+<script>
+//定义图片的宽度和高度，所有的图片要有相同的尺寸；
+var imgwidth=600
+var imgheight=150
+
+//定义了包含2个图片的数组，数组的下标从0开始，你可以增加任意的图片，按照顺序增加即可，注意相应增加数组下标。
+var imgname=new Array()
+imgname[0]="1.gif"
+imgname[1]="2.gif"
+
+//定义图片的url，如果不需要url，将连接值设置为"#"；
+var imgurl=new Array()
+imgurl[0]="#"
+imgurl[1]="#"
+
+// 先预读图片，不要修改这里；
+var imgpreload=new Array()
+for (i=0;i<=imgname.length-1;i++) {
+	imgpreload[i]=new Image()
+	imgpreload[i].src=imgname[i]
+}
+var pause=2000
+//图片的显示速度，数值小速度快；
+var speed=10
+//下面的参数也会影响图片显示的速度，数值小速度快；代表2个图片的显示间隔。
+var step=20
+
+var i_loop=0
+var i_image=0
+function stretchimage() {
+	if (i_loop<=imgwidth) {
+		if (document.all) {
+			imgcontainer.innerHTML="<a href='"+imgurl[i_image]+"' target='_blank'><img width='"+i_loop+"' height='"+imgheight+"' src='"+imgname[i_image]+"' border='0'></a>"
+		}
+		i_loop=i_loop+step
+		var timer=setTimeout("stretchimage()",speed)
+  	}
+	else {
+		i_loop=imgwidth
+		clearTimeout(timer)
+		imgcontainer.innerHTML="<a href='"+imgurl[i_image]+"' target='_blank'><img src='"+imgname[i_image]+"' border='0'></a>"
+		var timer=setTimeout("shrinkimage()",pause)
+	}
+}
+//改变图片的大小
+function shrinkimage() {
+	if (i_loop>=0) {
+		if (document.all) {
+			imgcontainer.innerHTML="<a href='"+imgurl[i_image]+"' target='_blank'><img width='"+i_loop+"' height='"+imgheight+"' src='"+imgname[i_image]+"' border='0'></a>"
+		}
+		i_loop=i_loop-step
+		var timer=setTimeout("shrinkimage()",speed)
+  	}
+	else {
+		i_loop=0
+		clearTimeout(timer)
+		changeimage()
+	}
+}
+//换图片
+function changeimage() {
+	i_image++
+	if (i_image>=imgname.length) {i_image=0}
+	if (document.layers) {
+		document.imgcontainer.document.write(
+		"<a href='"+imgurl[i_image]+"' target='_blank'><img src='"+imgname[i_image]+"' border='0'></a>")	
+		document.imgcontainer.document.close()
+	}		
+   	stretchimage()
+}
+</script>
+<style>
+.containerstyle {
+	position:absolute;
+	left:200px;
+	top:100px;
+}
+.mainstyel{
+        position:absolute;
+        top:300;
+}
+</style>
+
+</head>
+
+<body background="bg.gif" onLoad="stretchimage()">
+<span id="imgcontainer" class="containerstyle"></span>
+<span id="main" class="mainstyel">
+<center>
+<font size=30 color=#FF66CC face=创艺繁琥珀 > 
+可以多图切换。
+</font>
+</center>
+</span>
+</body>
+</html>
+

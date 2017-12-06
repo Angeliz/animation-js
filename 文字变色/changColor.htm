@@ -1,0 +1,46 @@
+<HTML>
+<HEAD>
+<title>
+Change Color
+</title>
+<BODY background=bg.gif>
+<SCRIPT language=JavaScript>
+document.writeln("<font color=blue size=30 face=汉鼎繁淡古>文字的变色：</font><br><br><br><br>")
+function initArray() {
+this.length = initArray.arguments.length;
+for (var i = 0; i < this.length; i++) {
+this[i] = initArray.arguments[i];
+   }
+}
+var ctext = "<br><br><br><br><br><br><br><br><font size=30 face=DextorOutD ><b>Look,the word can change color!You can add more color.</font>";
+var speed = 1000;
+var x = 0;
+var color = new initArray(
+"red", 
+"blue", 
+"#0099cc",
+"green",
+"gold",
+"#999999"
+);
+if(navigator.appName == "Netscape") {
+document.write('<layer id="c"><center>'+ctext+'</center></layer><br>');
+}
+if(navigator.appVersion.indexOf("MSIE") != -1){
+document.write('<div id="c"><center>'+ctext+'</center></div>'); //ie中,变色的文字处于层上
+}
+function chcolor(){ 
+if(navigator.appName == "Netscape") {
+document.c.document.write('<center><font color="'+color[x]);
+document.c.document.write('">'+ctext+'</font></center>');
+document.c.document.close();
+}
+else if (navigator.appVersion.indexOf("MSIE") != -1){
+document.all.c.style.color = color[x];    //改变字的颜色
+}
+(x < color.length-1) ? x++ : x = 0;   //反复循环变色
+}
+setInterval("chcolor()",1000);      //设置超时
+</SCRIPT>
+</BODY>
+</HTML>

@@ -1,0 +1,88 @@
+<html>
+<head>
+<style>
+<!--
+-->
+</style>
+<title></title>
+</head>
+<body leftmargin="0" marginwidth="0" background="bg.gif">
+<table border="0" width="98%" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td colspan="3" valign="top" align="left"><br>
+     <p align="center"><font color="#FF66CC">把鼠标放在超链上看效果</font></p>
+      <div align="center"> 
+        <center>
+              <p><strong><font size="6" color="#0099CC">看看一般的提示框:</font></strong><br>
+         <font face="Arial" size=30 ><a href="#" title="内容丰富,独具匠心.">
+           干&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;将</a></font>
+      </p>
+        </center>
+      </div>
+      <p align="center"><strong><font size="6" color="#0099CC">再看看滚动提示框:</font></strong></p>
+      <p align="center"><font face="Arial" size=30 ><a href="#" 
+    onMouseover="showtip(this,event,'优秀的程序员，优秀的个人网站!')"
+    onMouseout="hidetip()">点滴空间</a><br>
+    <a href="#"
+    onMouseover="showtip(this,event,'富于想象力的站点，不可不去!')"
+    onMouseout="hidetip()">九&nbsp;&nbsp;头&nbsp;&nbsp;鸟</a><br>
+    <a href="#"
+    onMouseover="showtip(this,event,'独特设计，不容错过!')"
+    onMouseout="hidetip()">影&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;子</a><br></font>
+        </p>
+      <div id="tooltip" style="position:absolute;visibility:hidden;clip:rect(0 150 50 0);width:149px;
+                               background-color:lightyellow; height: 19px; left: 77px; top: 96px"> 
+        <layer name="nstip" width=1000px bgcolor="lightyellow"></layer>
+      </div>
+      <strong><font face="Verdana"> 
+<script>
+if (!document.layers&&!document.all)
+event="test"
+function showtip(current,e,text)  //显示链接的说明
+{
+if (document.all&&document.readyState=="complete")  //针对IE
+{
+//显示跑马灯,内容就是提示框的内容
+document.all.tooltip.innerHTML='<marquee style="border:1px solid black">'+text+'</marquee>'  
+document.all.tooltip.style.pixelLeft=event.clientX+document.body.scrollLeft+10
+document.all.tooltip.style.pixelTop=event.clientY+document.body.scrollTop+10
+document.all.tooltip.style.visibility="visible"
+}
+
+else if (document.layers)    //针对Netscape
+{
+document.tooltip.document.nstip.document.write('<b>'+text+'</b>')
+document.tooltip.document.nstip.document.close()
+document.tooltip.document.nstip.left=0
+currentscroll=setInterval("scrolltip()",100)
+document.tooltip.left=e.pageX+10
+document.tooltip.top=e.pageY+10
+document.tooltip.visibility="show"
+}
+}
+function hidetip()  //隐藏链接的说明
+{
+if (document.all)
+document.all.tooltip.style.visibility="hidden"
+else if (document.layers){
+clearInterval(currentscroll)
+document.tooltip.visibility="hidden"
+}
+}
+
+function scrolltip()  //在Netscape中实现提示框内容的滚动显示
+{
+if (document.tooltip.document.nstip.left>=-document.tooltip.document.nstip.document.width)
+document.tooltip.document.nstip.left-=5
+else
+document.tooltip.document.nstip.left=150
+}
+
+</script>
+      </font></strong> 
+      <p align="left">&nbsp;</p>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

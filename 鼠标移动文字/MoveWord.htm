@@ -1,0 +1,48 @@
+<HTML>
+<HEAD>
+<TITLE>THE EXAMPLE</TITLE>
+<style>
+.drag{position:relative;cursor:hand}
+</style>
+<script language="JavaScript">
+var dragapproved=false
+var eventsource,x,y
+function move()
+ {
+  if (event.button==1&&dragapproved) //改变被拖动元素在页面上的位置
+   {
+    eventsource.style.pixelLeft=temp1+event.clientX-x
+    eventsource.style.pixelTop=temp2+event.clientY-y
+    return false
+   }
+ }
+function drags()
+ {
+  if (!document.all)
+  return
+  if (event.srcElement.className=="drag") //捕捉鼠标和被拖动元素的当前位置
+   {
+    dragapproved=true
+    eventsource=event.srcElement
+    temp1=eventsource.style.pixelLeft
+    temp2=eventsource.style.pixelTop
+    x=event.clientX
+    y=event.clientY
+    document.onmousemove=move
+   }
+ }
+document.onmousedown=drags   //按下鼠标拖动
+document.onmouseup=new Function("dragapproved=false")//鼠标左键放开时,拖动停止
+</script>
+</HEAD>
+<BODY>
+<span style="font-family:DextorOutD;font-size: 9pt">
+<font color=#de3076 class="drag" size=30>Put the mouse on the words,put down the left botton of the mouse and move the mouse,you can drag the word.</font>
+</span>
+<center>
+<img src="head.gif"><br>
+<font face=文鼎彩云繁 color=#0000FF size=30>按下鼠标拖动文字</font><br>
+<img src="head.gif">
+</center>
+</BODY>
+</HTMl>

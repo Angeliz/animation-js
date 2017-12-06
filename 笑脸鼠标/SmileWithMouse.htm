@@ -1,0 +1,68 @@
+<html>
+<head>
+<script LANGUAGE="JavaScript">
+//在ie和Netscape两种浏览其中均有效果
+var newtop=0
+var newleft=0
+if (navigator.appName == "Netscape") 
+ {
+  layerStyleRef="layer.";
+  layerRef="document.layers";
+  styleSwitch="";
+ }
+else
+ {
+  layerStyleRef="layer.style.";
+  layerRef="document.all";
+  styleSwitch=".style";
+ }
+function doMouseMove()  //控制在鼠标移动时图的位置
+ {
+  layerName = 'iit'
+  eval('var curElement='+layerRef+'["'+layerName+'"]') //定义 vurElement=documnet.all.iit
+  eval(layerRef+'["'+layerName+'"]'+styleSwitch+'.visibility="hidden"')
+  eval('curElement'+styleSwitch+'.visibility="visible"')
+  eval('newleft=document.body.clientWidth-curElement'+styleSwitch+'.pixelWidth')
+  eval('newtop=document.body.clientHeight-curElement'+styleSwitch+'.pixelHeight')
+  eval('height=curElement'+styleSwitch+'.height')
+  eval('width=curElement'+styleSwitch+'.width')
+  width=parseInt(width)
+  height=parseInt(height)
+  if (event.clientX > (document.body.clientWidth - 5 - width))
+   {
+    newleft=document.body.clientWidth + document.body.scrollLeft - 5 - width
+   }
+  else
+   {
+    newleft=document.body.scrollLeft + event.clientX
+   }
+  eval('curElement'+styleSwitch+'.pixelLeft=newleft')
+  if (event.clientY > (document.body.clientHeight - 5 - height))
+   {
+    newtop=document.body.clientHeight + document.body.scrollTop - 5 - height
+   }
+  else
+   {
+    newtop=document.body.scrollTop + event.clientY
+   }
+  eval('curElement'+styleSwitch+'.pixelTop=newtop')
+ }
+document.onmousemove = doMouseMove;
+
+if (navigator.appName == "Netscape") 
+ {
+ }
+else
+ {
+  document.write('<div ID=OuterDiv>')
+  document.write('<img ID=iit src="smile.gif" STYLE="position:absolute;TOP:5pt;LEFT:5pt;Z-INDEX:10;visibility:hidden;">')
+  document.write('</div>')
+ }
+</script>
+</head>
+<body background="bg.jpg">
+<br><br><br><br>
+<center><font size=30 face=文鼎彩云繁 color=#0099CC>
+移动鼠标，你会看到效果</font></center>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<HTML>
+<HEAD>
+<TITLE>Index midden </TITLE>
+<STYLE>
+.30PT{font-size:30pt;font-family:方正行楷繁体;color:red}
+</STYLE>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+var version ="OL";
+if (navigator.userAgent.indexOf("Mozilla/3.0") != -1) version = "OK"; 
+else if (navigator.userAgent.indexOf("MSIE") != -1) version = "OX"; 
+else if (navigator.userAgent.indexOf("Mozilla/4.0") != -1) version = "OK"; 
+function switsj(n)   
+{  
+for(var i=1; i<=10; i++)
+      {
+       document.images[i+10].src=i+"off.gif"; 
+       }
+ document.images[n+10].src=n+"on.gif"; 
+  }
+var  tekst ;
+var lied;
+var count = 0;
+function scroll() 
+{
+document.rant.banner.value = tekst.substring (count,tekst.length) + tekst.substring (0,count)
+if (count < tekst.length)
+count ++;
+else
+count = 0;
+setTimeout ("scroll()", 333);
+// 333ms is the minimum delay for Netscape 2.0
+}
+
+function Play(nr) 
+{
+if (version != "OL")
+{ 
+if (nr==1) {lied="girl.mid";tekst="       现在播放  -- About A Girl --   Nirvana. ";}
+if (nr==2) {lied="around.mid";tekst="       现在播放  -- I'll Stick Around -- Foo Fighters. ";}
+if (nr==3) {lied="closer.mid";tekst="       现在播放  -- Closer  -- Nine Inch Nails. ";}
+if (nr==4) {lied="dreams.mid";tekst="       现在播放  -- Sweet Dreams -  Marylin Manson. ";}
+if (nr==5) {lied="play.mid";tekst="       现在播放  -- Come Out And Play --  Offspring. ";}
+if (nr==6) {lied="shot.mid";tekst="       现在播放  -- Hey Man Nice Shot -- Filter. ";}
+if (nr==7) {lied="violet.mid";tekst="       现在播放  -- Violet --  Hole. ";}
+if (nr==8) {lied="abuse.mid";tekst="       现在播放  -- Abuse Me --  Silverchair. ";}
+if (nr==9) {lied="whatigot.mid";tekst="       现在播放  -- What I Got -- Sublime. ";}
+if (nr==10) {lied="blank.htm";tekst="      暂停播放. 请选择背景音乐播放.  ";}
+ scroll();
+if (version=="OK")  switsj(nr);
+PopUp = window.open (lied, "Crescendo",
+    "toolbar=no,location=no,directories=no,status=no,scrollbars=no,resizeable=no,copyhistory=no,width=200,height=20") ;
+}
+}
+-->
+
+</SCRIPT> 
+<BODY BGCOLOR="ffffff"><!-- onLoad="Play (10);Play(1);" -->
+<CENTER>
+<SCRIPT LANGUAGE="JavaScript">
+<!--播放器的界面
+if (version !="OL" )
+{
+document.write("   <BR>&nbsp;<BR>&nbsp;<BR>&nbsp;<BR>&nbsp;<BR><TABLE BORDER=2  BGCOLOR='#FBFECF'>")
+document.write("   <TH><form name='rant'><Center> ")
+document.write("   <FONT SIZE='4' FACE='Book Antiqua' COLOR='Navy'>MUSIC SELECTION BOX</FONT><BR>") 
+document.write("   <A href='#select'><IMG SRC='vrgtk.gif' WIDTH=15 HEIGHT=15 BORDER=0 ></A>")
+document.write("   <A href='javascript: {Play(1);}'><IMG SRC='1off.gif' WIDTH=15 HEIGHT=15 BORDER=0 ></A>")
+document.write("   <A href='javascript: {Play(2);}'><IMG SRC='2off.gif' WIDTH=15 HEIGHT=15 BORDER=0 ></A>")
+document.write("   <A href='javascript: {Play(3);}'><IMG SRC='3off.gif' WIDTH=15 HEIGHT=15 BORDER=0 ></A>")
+document.write("   <A href='javascript: {Play(4);}'><IMG SRC='4off.gif' WIDTH=15 HEIGHT=15 BORDER=0 ></A>")
+document.write("   <A href='javascript: {Play(5);}'><IMG SRC='5off.gif' WIDTH=15 HEIGHT=15 BORDER=0 ></A>")
+document.write("   <A href='javascript: {Play(6);}'><IMG SRC='6off.gif' WIDTH=15 HEIGHT=15 BORDER=0 ></A>")
+document.write("   <A href='javascript: {Play(7);}'><IMG SRC='7off.gif' WIDTH=15 HEIGHT=15 BORDER=0 ></A>")
+document.write("   <A href='javascript: {Play(8);}'><IMG SRC='8off.gif' WIDTH=15 HEIGHT=15 BORDER=0 ></A>")
+document.write("   <A href='javascript: {Play(9);}'><IMG SRC='9off.gif' WIDTH=15 HEIGHT=15 BORDER=0 ></A>")
+document.write("   <A href='javascript: {Play(10);}'><IMG SRC='10off.gif' WIDTH=15 HEIGHT=15 BORDER=0 ></A><BR>")
+document.write("   <INPUT TYPE='text' NAME='banner'  size='30' ><BR>")
+document.write("   <FONT SIZE='1' FACE='Arial Rounded MT Bold'>If you can't hear the music get <BR>the Crescendo plug-in.") 
+document.write("   </FONT></CENTER></FORM></TH></TABLE><BR>&nbsp;<BR>&nbsp;<BR>&nbsp;<BR>")
+document.write("   <FONT CLASS=30PT>播放器上的数字可选择音乐播放</FONT>")
+}
+else
+{
+document.write("   <BR><FONT SIZE='+1' COLOR='Red'>The MUSIC SELECTION BOX is not supported by browsers less than Netscape 3.0 and MSIE 3.0!</FONT>");
+}
+//-->
+
+</SCRIPT>
+<hr width=75%>
+<center>
+<table>
+<tr><td>
+可选择的乐曲:</tr><tr><td>
+1. About A Girl - Nirvana</tr><tr><td>
+2. I'll Stick Around - Foo Fighters</tr><tr><td>
+3. Closer - Nine Inch Nails</tr><tr><td>
+4. Sweet Dreams - Marylin Manson</tr><tr><td>
+5. Come Out & Play - Offspring</tr><tr><td>
+6. Hey Man, Nice Shot - Filter</tr><tr><td>
+7. Violet -	Hole</tr><tr><td>
+8. Abuse Me	- Silverchair</tr><tr><td>
+9. What I Got -	Sublime
+</font></font>
+</center>
+</center>
+</body>
+</html>

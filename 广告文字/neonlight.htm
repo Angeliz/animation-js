@@ -1,0 +1,70 @@
+<html>
+<head>
+<title>文字广告效果</title>
+<style>
+.30pt{font-size:30pt;font-family:方正魏碑繁体;color:#CC0099}
+</style>
+</head>
+<body>
+<script language="JavaScript">
+<!--
+text = "欢迎选修网页设计与网站建设课程"; //显示的文字
+color1 = "blue"; //文字的颜色
+color2 = "red"; //转换的颜色
+fontsize = "10"; //字体大小
+speed = 200; //转换速度 (1000 = 1 秒) 
+
+i = 0;
+if (navigator.appName == "Netscape") {
+document.write("<layer id=a visibility=show></layer><br><br><br>");
+}
+else {
+document.write("<div id=a></div>");
+}
+function changeCharColor()  //改变文字颜色
+{
+if (navigator.appName == "Netscape")  //使适合于IE和Netscape两种浏览器
+{
+ document.a.document.write("<center><font face=arial size =" + fontsize + "><font color=" + color1 + ">");
+ for (var j = 0; j < text.length; j++) {
+ if(j == i) {
+  document.a.document.write("<font face=arial color=" + color2 + ">" + text.charAt(i) + "</font>");
+  }
+ else {
+  document.a.document.write(text.charAt(j));
+  }
+ }
+ document.a.document.write('</font></font></center>');
+ document.a.document.close();
+}
+if (navigator.appName == "Microsoft Internet Explorer")  
+{
+ str = "<center><font face=arial size=" + fontsize + "><font color=" + color1 + ">";
+ for (var j = 0; j < text.length; j++) {
+  if( j == i) {
+   str += "<font face=arial color=" + color2 + ">" + text.charAt(i) + "</font>";
+   }
+  else {
+   str += text.charAt(j);
+  }
+ }
+ str += "</font></font></center>";
+ a.innerHTML ="<br><br><br><table width=100%>"
+             +"<tr><td height=64 background=back.gif>&nbsp;"
+             +"</tr></table><br>"+str;
+ }
+(i == text.length) ? i=0 : i++;  //记录变色字符的位置
+}
+setInterval("changeCharColor()", speed);
+-->
+</script>
+<center>
+<br>
+<table width=100%>
+ <tr><td height=64 background=back.gif>&nbsp;
+ </tr>
+</table>
+<font class=30pt><br>看文字广告效果（不停的闪烁）</font>
+</center>
+</body>
+</html>

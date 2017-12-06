@@ -1,0 +1,78 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>新页面 1</title>
+</head>
+
+<body>
+
+<p align="center"><br>
+<font color="#800000"><big><big><big><big><big><big><strong>趣味拼图</strong></big></big></big></big></big></big></font></p>
+
+<dl>
+  <dd align="right"><table border="0" width="100%" cellspacing="3" cellpadding="3">
+      <tr>
+        <td width="50%"><table border="1" width="67%" height="127" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="20%" align="left" height="95"><img src="../a" onMouseDown="MoveImage(0,0,1,0,4)" width="95" height="95"></td>
+            <td width="20%" align="left" height="95"><img src="../a" onMouseDown="MoveImage(1,1,1,0,4)" width="95" height="95"></td>
+            <td width="20%" align="left" height="95"><img src="../a" onMouseDown="MoveImage(2,1,1,0,4)" width="95" height="95"></td>
+            <td width="20%" align="left" height="95"><img src="../a" onMouseDown="MoveImage(3,1,0,0,4)" width="95" height="95"></td>
+            <td width="20%" align="left" height="143" rowspan="2"><dl>
+              <dt><font color="#FF0000">规则：</font></dt>
+            </dl>
+            <p><font color="#0000FF">当一幅图片旁边有空白区时可单击此图片便之移动，直到左边12幅小图片组合成右边的图像为止</font>。</td>
+          </tr>
+          <tr>
+            <td width="20%" align="left" height="48"><img src="../a" onMouseDown="MoveImage(4,0,1,4,4)" width="95" height="95"></td>
+            <td width="20%" align="left" height="48"><img src="../a" onMouseDown="MoveImage(5,1,1,4,4)" width="95" height="95"></td>
+            <td width="20%" align="left" height="48"><img src="../a" onMouseDown="MoveImage(6,1,1,4,4)" width="95" height="95"></td>
+            <td width="20%" align="left" height="48"><img src="../a" onMouseDown="MoveImage(7,1,0,4,4)" width="95" height="95"></td>
+          </tr>
+          <tr>
+            <td width="20%" align="left" height="1"><img src="../a" onMouseDown="MoveImage(8,0,1,4,0)" width="95" height="95"></td>
+            <td width="20%" align="left" height="1"><img src="../a" onMouseDown="MoveImage(9,1,1,4,0)" width="95" height="95"></td>
+            <td width="20%" align="left" height="1"><img src="../a" onMouseDown="MoveImage(10,1,1,4,0)" width="95" height="95"></td>
+            <td width="20%" align="left" height="1"><img src="../a" onMouseDown="MoveImage(11,1,1,4,0)" width="95" height="95"></td>
+            <td width="20%" align="left" height="1"><img src="../a" onMouseDown="MoveImage(12,1,0,0,0)" width="95" height="95"></td>
+          </tr>
+        </table>
+        </td>
+        <td width="50%"><img src="IMAGE007.JPG" alt="IMAGE007.JPG (16892 字节)" WIDTH="227" HEIGHT="170"><dl>
+          <div align="center"><center>
+          <dt><font face="隶书" color="#FF0000"><big><big><big><big><big><big><big><big>样图</big></big></big></big></big></big></big></big></font></dt>
+          </center></div>
+        </dl>
+        </td>
+      </tr>
+    </table>
+    <p><br>
+    </p>
+  </dd>
+  <script>
+index=new Array(1,1,1,1,1,1,1,1,1,1,1,1,0);
+for(i=0;i<13;i++){
+document.images[i].src="C_"+i+".JPG";
+}
+function MoveImage(imageIndex,D1,D2,D3,D4){
+if(index[imageIndex-D1]==0)moveTo(imageIndex,imageIndex-D1);
+if(index[imageIndex+D2]==0)moveTo(imageIndex,imageIndex+D2);
+if(index[imageIndex-D3]==0)moveTo(imageIndex,imageIndex-D3);
+if(index[imageIndex+D4]==0)moveTo(imageIndex,imageIndex+D4);
+
+}
+function moveTo(image1,image2){
+Img=new Image();
+Img.src=document.images[image2].src
+document.images[image2].src=document.images[image1].src;
+document.images[image1].src=Img.src;
+index[image2]=1;
+index[image1]=0;
+}
+
+</script>
+
+</dl>
+</body>
+</html>

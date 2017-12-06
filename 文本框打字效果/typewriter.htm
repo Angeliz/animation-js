@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>typewriter</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=gb2312">
+<STYLE>.box {
+	FONT-SIZE: 20px; COLOR: red
+}
+</STYLE>
+
+<SCRIPT language=JavaScript>
+var max=0;
+function textlist()  //自己的对象,存储字符串
+{
+  max=textlist.arguments.length;
+  for (i=0; i<max; i++)
+   this[i]=textlist.arguments[i];
+}
+tl=new textlist    //实际上是一个多维数组 tl[0]="欢迎报考武汉大学信息管理学院"其余类推
+(
+        "欢迎报考武汉大学信息管理学院",
+        "信息管理学院具有中国一流的师资",
+        "编辑出版专业尤为突出"
+);
+var x=0; pos=0;
+var l=tl[0].length;
+function textticker() 
+{        
+  document.form1.textfeld.value=tl[x].substring(0,pos)+"_";
+  if(pos++==l)
+        {
+         pos=0;
+         setTimeout("textticker()",1000); //控制两段话间的转换时间
+         x++;
+         if(x==max)
+          x=0;
+          l=tl[x].length;
+        } else
+  setTimeout("textticker()",130);  //控制文字间的显示时间
+}
+</SCRIPT>
+
+<META content="MSHTML 6.00.2900.2180" name=GENERATOR></HEAD>
+<BODY onload=textticker()>
+<CENTER>&nbsp; 
+<P></P><IMG src="line1.gif"> 
+<FORM name=form1 method=get>
+<CENTER>
+<P><INPUT class=box size=40 name=textfeld></P></FORM><IMG 
+src="line1.gif"> 
+<P align=center><BR><BR><FONT face=创艺繁综艺 color=#ce288c 
+size=20>文本框<BR>中的打字机效果,<BR>显示内容可以任意增加,<BR>打字速度也可以在程序中随意调整</FONT></P></CENTER></CENTER></BODY></HTML>

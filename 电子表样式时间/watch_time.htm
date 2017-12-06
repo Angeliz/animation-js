@@ -1,0 +1,97 @@
+<HTML>
+<HEAD>
+<TITLE>
+电子表
+</TITLE>
+<STYLE>
+<!--样式单 -->
+.30pt{font-size:50pt;font-family:文鼎雕刻体;color:#ce288c}
+</STYLE>
+<script>
+<!--
+var dn
+c1=new Image(); c1.src="img/c1.gif"
+c2=new Image(); c2.src="img/c2.gif" 
+c3=new Image(); c3.src="img/c3.gif" 
+c4=new Image(); c4.src="img/c4.gif" 
+c5=new Image(); c5.src="img/c5.gif" 
+c6=new Image(); c6.src="img/c6.gif" 
+c7=new Image(); c7.src="img/c7.gif" 
+c8=new Image(); c8.src="img/c8.gif" 
+c9=new Image(); c9.src="img/c9.gif" 
+c0=new Image(); c0.src="img/c0.gif" 
+cb=new Image(); cb.src="img/cb.gif"
+cam=new Image(); cam.src="img/cam.gif"
+cpm=new Image(); cpm.src="img/cpm.gif"
+function extract(h,m,s,type){
+if (!document.images)
+return
+if (h<=9){
+document.images.a.src=cb.src
+document.images.b.src=eval("c"+h+".src")
+}
+else {
+document.images.a.src=eval("c"+Math.floor(h/10)+".src")
+document.images.b.src=eval("c"+(h%10)+".src")
+}
+if (m<=9){
+document.images.d.src=c0.src
+document.images.e.src=eval("c"+m+".src")
+}
+else {
+document.images.d.src=eval("c"+Math.floor(m/10)+".src")
+document.images.e.src=eval("c"+(m%10)+".src")
+}
+if (s<=9){
+document.g.src=c0.src
+document.images.h.src=eval("c"+s+".src")
+}
+else {
+document.images.g.src=eval("c"+Math.floor(s/10)+".src")
+document.images.h.src=eval("c"+(s%10)+".src")
+}
+if (dn=="AM") document.j.src=cam.src
+else document.images.j.src=cpm.src
+}
+function show3(){
+if (!document.images)
+return
+var Digital=new Date()
+var hours=Digital.getHours()
+var minutes=Digital.getMinutes()
+var seconds=Digital.getSeconds()
+dn="AM" 
+if ((hours>=12)&&(minutes>=1)||(hours>=13)){
+dn="PM"
+hours=hours-12
+}
+if (hours==0)
+hours=12
+extract(hours,minutes,seconds,dn)
+setTimeout("show3()",1000)
+}
+//-->
+</script>
+</HEAD>
+<BODY onload=show3()>
+<center>
+<br><br><br>
+<TABLE cellSpacing=0 cellPadding=0 border=0 >
+  <TBODY>
+  <TR>
+    <TD bgcolor=#4a7b94 valign=middle>
+      <P align=left>
+      <IMG src="img/cb.gif" name=a>
+      <IMG src="img/cb.gif" name=b>
+      <IMG src="img/colon.gif" name=c>
+      <IMG src="img/cb.gif" name=d>
+      <IMG src="img/cb.gif" name=e>
+      <IMG src="img/colon.gif" name=f>
+      <IMG src="img/cb.gif" name=g>
+      <IMG src="img/cb.gif" name=h>
+      <IMG src="img/cam.gif" name=j> 
+    </P></TD></TR></TBODY></TABLE>
+ <font class=30pt><br>这是一个电子表样式的时间显示</font>
+ </center>
+</BODY>
+</HTML>
